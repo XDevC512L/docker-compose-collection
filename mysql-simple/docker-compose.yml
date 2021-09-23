@@ -1,0 +1,21 @@
+# DOCS
+# https://hub.docker.com/_/mysql
+
+version: '3'
+
+services:
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      #MYSQL_RANDOM_ROOT_PASSWORD: yes
+      #MYSQL_ALLOW_EMPTY_ROOT_PASSWORD: yes
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: db_name
+      MYSQL_USER: example_user
+      MYSQL_PASSWORD: example_user_password
+      #MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql-root
+
+

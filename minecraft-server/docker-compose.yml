@@ -1,0 +1,30 @@
+# DOCS
+# https://github.com/itzg/docker-minecraft-server/blob/master/README.md
+
+version: "3"
+
+services:
+  mc:
+    image: itzg/minecraft-server:java8-multiarch
+    ports:
+      - 25565:25565
+    environment:
+      EULA: "TRUE"
+      # Versions
+      VERSION: 1.12.2
+      TYPE: FORGE
+      FORGEVERSION: 14.23.5.2855
+      # USER
+      MOTD: "Dockerland"
+      ONLINE_MODE: "FALSE"
+      MEMORY: "3G"
+      # RCON configs
+      ENABLE_RCON: "TRUE"
+      RCON_PASSWORD: "123456"
+
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    volumes:
+      # attach a directory relative to the directory containing this compose file
+      - ./minecraft-data:/data
